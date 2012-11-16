@@ -1,6 +1,5 @@
-# Push and pop directories on directory stack
-alias pu='pushd'
-alias po='popd'
+# General
+alias cls='clear'
 
 # Basic directory operations
 alias ...='cd ../..'
@@ -16,8 +15,8 @@ alias history='fc -l 1'
 
 # List direcory contents
 alias lsa='ls -lah'
-alias l='ls -la'
-alias ll='ls -l'
+alias ll='ls -lah'
+alias l='ls -lh'
 alias sl=ls # often screw this up
 
 alias afind='ack-grep -il'
