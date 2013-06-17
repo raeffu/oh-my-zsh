@@ -5,6 +5,24 @@
 #       VERSION:  1.0.1
 # ------------------------------------------------------------------------------
 
+alias pv=preview
+alias cls='clear'
+
+function savepath() {
+  pwd > ~/.current_path~
+}
+
+function flush_dns () {
+  sudo dscacheutil -flushcache
+}
+
+function preview () {
+  qlmanage -p $1 2> /dev/null
+}
+
+function dhcp_renew () {
+  sudo ipconfig set en0 BOOTP;sudo ipconfig set en0 DHCP
+}
 
 function tab() {
   local command="cd \\\"$PWD\\\""
@@ -96,4 +114,3 @@ function trash() {
   done
   IFS=$temp_ifs
 }
-
