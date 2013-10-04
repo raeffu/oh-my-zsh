@@ -83,6 +83,8 @@ compdef _git ga=git-add
 alias gm='git merge'
 compdef _git gm=git-merge
 alias grh='git reset HEAD'
+# git unstage
+alias gu='git reset HEAD'
 alias grhh='git reset HEAD --hard'
 
 alias gg='git log --oneline --graph'
