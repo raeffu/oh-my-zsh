@@ -87,7 +87,7 @@ alias grh='git reset HEAD'
 alias gu='git reset HEAD'
 alias grhh='git reset HEAD --hard'
 
-alias gg='git log --oneline --graph'
+alias gg='git log --graph'
 compdef _git gg=git-log
 
 alias gga='git log --graph --all --not refs/notes/build'
