@@ -100,9 +100,6 @@ alias gt='git tag'
 alias gtl='git tag -l'
 alias gta='git tag -a'
 
-alias glg='git log --stat --max-count=5'
-compdef _git glg=git-log
-
 alias git='nocorrect noglob git'
 
 #
