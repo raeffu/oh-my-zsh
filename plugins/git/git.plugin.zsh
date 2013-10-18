@@ -82,10 +82,19 @@ alias ga='git add'
 compdef _git ga=git-add
 alias gm='git merge'
 compdef _git gm=git-merge
-alias grh='git reset HEAD'
+# alias grh='git reset HEAD'
+# alias grhh='git reset HEAD --hard'
+alias grh='git reset --hard HEAD'
 # git unstage
 alias gu='git reset HEAD'
-alias grhh='git reset HEAD --hard'
+alias gun='git rm --cached'
+
+# git undo workingtree file
+alias gud='git checkout --'
+
+# git revert
+alias grv='git revert'
+alias grb='git revert --no-commit'
 
 alias gg='git log --graph'
 compdef _git gg=git-log
