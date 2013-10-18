@@ -42,8 +42,6 @@ compdef _git gdc=git-diff
 alias gst='git status'
 compdef _git gst=git-status
 
-alias gp='git push'
-
 gdv() { git diff -w "$@" | view - }
 compdef _git gdv=git-diff
 
@@ -96,7 +94,7 @@ alias gud='git checkout --'
 alias grv='git revert'
 alias grb='git revert --no-commit'
 
-alias gg='git log --graph'
+alias gg='git log --graph --oneline'
 compdef _git gg=git-log
 
 alias gga='git log --graph --all --not refs/notes/build'
