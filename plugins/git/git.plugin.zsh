@@ -23,7 +23,8 @@ compdef _git glr=git-pull
 
 alias gr='git remote'
 alias grs='git remote show'
-alias gf='git fetch && git fetch --tags'
+alias gf='git fetch'
+alias gft='git fetch --tags'
 
 alias gp='git push'
 compdef _git gp=git-push
