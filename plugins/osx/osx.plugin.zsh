@@ -2,7 +2,7 @@
 #          FILE:  osx.plugin.zsh
 #   DESCRIPTION:  oh-my-zsh plugin file.
 #        AUTHOR:  Sorin Ionescu (sorin.ionescu@gmail.com)
-#       VERSION:  1.0.1
+#       VERSION:  1.1.0
 # ------------------------------------------------------------------------------
 
 alias pv=preview
@@ -25,7 +25,7 @@ function dhcp_renew () {
 }
 
 function tab() {
-  local command="cd \\\"$PWD\\\""
+  local command="cd \\\"$PWD\\\"; clear; "
   (( $# > 0 )) && command="${command}; $*"
 
   the_app=$(
@@ -56,6 +56,64 @@ EOF
             write text "${command}"
           end tell
         end tell
+      end tell
+EOF
+  }
+}
+
+function vsplit_tab() {
+  local command="cd \\\"$PWD\\\""
+  (( $# > 0 )) && command="${command}; $*"
+
+  the_app=$(
+    osascript 2>/dev/null <<EOF
+      tell application "System Events"
+        name of first item of (every process whose frontmost is true)
+      end tell
+EOF
+  )
+
+  [[ "$the_app" == 'iTerm' ]] && {
+    osascript 2>/dev/null <<EOF
+      tell application "iTerm" to activate
+
+      tell application "System Events"
+        tell process "iTerm"
+          tell menu item "Split Vertically With Current Profile" of menu "Shell" of menu bar item "Shell" of menu bar 1
+            click
+          end tell
+        end tell
+        keystroke "${command}; clear;"
+        keystroke return
+      end tell
+EOF
+  }
+}
+
+function split_tab() {
+  local command="cd \\\"$PWD\\\""
+  (( $# > 0 )) && command="${command}; $*"
+
+  the_app=$(
+    osascript 2>/dev/null <<EOF
+      tell application "System Events"
+        name of first item of (every process whose frontmost is true)
+      end tell
+EOF
+  )
+
+  [[ "$the_app" == 'iTerm' ]] && {
+    osascript 2>/dev/null <<EOF
+      tell application "iTerm" to activate
+
+      tell application "System Events"
+        tell process "iTerm"
+          tell menu item "Split Horizontally With Current Profile" of menu "Shell" of menu bar item "Shell" of menu bar 1
+            click
+          end tell
+        end tell
+        keystroke "${command}; clear;"
+        keystroke return
       end tell
 EOF
   }
@@ -113,4 +171,41 @@ function trash() {
     fi
   done
   IFS=$temp_ifs
+}
+
+function vncviewer() {
+  open vnc://$@
+}
+
+# iTunes control function
+function itunes() {
+	local opt=$1
+	shift
+	case "$opt" in
+		launch|play|pause|stop|rewind|resume|quit)
+			;;
+		mute)
+			opt="set mute to true"
+			;;
+		unmute)
+			opt="set mute to false"
+			;;
+		next|previous)
+			opt="$opt track"
+			;;
+		""|-h|--help)
+			echo "Usage: itunes <option>"
+			echo "option:"
+			echo "\tlaunch|play|pause|stop|rewind|resume|quit"
+			echo "\tmute|unmute\tcontrol volume set"
+			echo "\tnext|previous\tplay next or previous track"
+			echo "\thelp\tshow this message and exit"
+			return 0
+			;;
+		*)
+			print "Unkonwn option: $opt"
+			return 1
+			;;
+	esac
+	osascript -e "tell application \"iTunes\" to $opt"
 }
