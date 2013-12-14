@@ -54,12 +54,11 @@ alias gca='git commit -v -a'
 compdef _git gc=git-commit
 alias gca!='git commit -v -a --amend'
 compdef _git gca!=git-commit
-alias gcmsg='git commit -m'
-compdef _git gcmsg=git-commit
+alias gcm='git commit -m'
+compdef _git gcm=git-commit
 alias gco='git checkout'
 compdef _git gco=git-checkout
 
-alias gcm='git checkout master'
 alias gr='git remote'
 compdef _git gr=git-remote
 alias grv='git remote -v'
@@ -106,17 +105,20 @@ alias ga='git add'
 compdef _git ga=git-add
 
 # alias grh='git reset HEAD'
-# alias grhh='git reset HEAD --hard'
-alias grh='git reset --hard HEAD'
+alias grh='git reset --hard'
+alias grhh='git reset --hard HEAD'
+
 # git unstage
 alias gu='git reset HEAD'
-alias gun='git rm --cached'
+# git unstage all
+alias gua='git rm --cached'
 
 # git undo workingtree file
 alias gud='git checkout --'
 
 # git revert
 alias grv='git revert'
+# git rollback
 alias grb='git revert --no-commit'
 
 alias gg='git log --graph'
