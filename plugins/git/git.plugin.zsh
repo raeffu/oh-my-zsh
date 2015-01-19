@@ -24,7 +24,6 @@ alias glr='git pull --rebase'
 compdef _git glr=git-pull
 
 alias gr='git remote'
-alias grs='git remote show'
 alias gf='git fetch'
 alias gft='git fetch --tags'
 
@@ -65,8 +64,8 @@ alias gr='git remote'
 compdef _git gr=git-remote
 alias grv='git remote -v'
 compdef _git grv=git-remote
-alias grmv='git remote rename'
-compdef _git grmv=git-remote
+#alias grmv='git remote rename'
+#compdef _git grmv=git-remote
 alias grrm='git remote remove'
 compdef _git grrm=git-remote
 alias grset='git remote set-url'
@@ -105,7 +104,14 @@ compdef _git gss=git-status
 
 # alias grh='git reset HEAD'
 alias grh='git reset --hard'
-alias grhh='git reset --hard HEAD'
+
+# git reset --soft HEAD^ to correct last commit
+# remove commit and put into staging area
+alias grs='git reset --soft'
+alias grsh='git reset --soft HEAD^'
+
+# undo merge (last commit)
+alias grsm='git reset --merge origin/HEAD'
 
 # git unstage
 alias gu='git reset HEAD'
