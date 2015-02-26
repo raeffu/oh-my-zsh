@@ -121,8 +121,11 @@ alias gua='git rm --cached'
 # git undo workingtree file
 alias gud='git checkout --'
 
+
+# remove untracked files
+alias gcln='git clean'
 # remove untracked files (dryrun)
-alias gcln='git clean -n'
+alias gclnd='git clean -n'
 
 # git revert
 alias grv='git revert'
