@@ -123,6 +123,8 @@ alias gud='git checkout --'
 
 # remove untracked files (dryrun)
 alias gcln='git clean -n'
+# remove untracked files
+alias gclnf='git clean -f'
 
 # git revert
 alias grv='git revert'
