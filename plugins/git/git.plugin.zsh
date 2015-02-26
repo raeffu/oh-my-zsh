@@ -122,7 +122,7 @@ alias gua='git rm --cached'
 alias gud='git checkout --'
 
 # remove untracked files (dryrun)
-alias gclnd='git clean -n'
+alias gcln='git clean -n'
 
 # git revert
 alias grv='git revert'
