@@ -127,9 +127,9 @@ alias gcln='git clean -n'
 alias gclnf='git clean -f'
 
 # git revert
-alias grv='git revert'
+alias grev='git revert'
 # git rollback
-alias grb='git revert --no-commit'
+alias groba='git revert --no-commit'
 
 alias gg='git log --graph'
 compdef _git gg=git-log
